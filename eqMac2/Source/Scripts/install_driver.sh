@@ -4,12 +4,16 @@
 spctl --master-disable
 
 # remove eqMac 1.0 driver
-kextunload /System/Library/Extensions/eqMacDriver.kext/
-rm -rf /System/Library/Extensions/eqMacDriver.kext/
+if [ -d /System/Library/Extensions/eqMacDriver.kext/ ]; then
+    kextunload /System/Library/Extensions/eqMacDriver.kext/
+    rm -rf /System/Library/Extensions/eqMacDriver.kext/
+fi
 
 # remove eqMac < 2.1 driver
-kextunload /System/Library/Extensions/eqMac2Driver.kext/
-rm -rf /System/Library/Extensions/eqMac2Driver.kext/
+if [ -d /System/Library/Extensions/eqMac2Driver.kext/ ]; then
+    kextunload /System/Library/Extensions/eqMac2Driver.kext/
+    rm -rf /System/Library/Extensions/eqMac2Driver.kext/
+fi
 
 touch /System/Library/Extensions
 
